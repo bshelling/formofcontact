@@ -1,0 +1,44 @@
+$white: #fff;
+$error: #e74c3c;
+$success: #2ecc71;
+$submitBtn: #141414;
+
+.formOfContact{
+  background: #ffffff;
+  padding: 25px;
+  margin-top:25px;
+  margin-bottom:25px;
+
+  .success{
+	  border-radius:3px;
+     text-align: center;
+     padding-top:15px;
+     padding-bottom: 15px;
+     margin-bottom:15px;
+     background: $success;
+
+     p {
+      margin-bottom: 0px;
+      color: $white;
+      text-shadow: 0px 1px 1px #5d5d5d;
+     }
+  }
+.error{
+     text-align: center;
+     padding-top:15px;
+     padding-bottom: 15px;
+     margin-bottom:15px;
+     background: $error;
+     border-radius:3px;
+
+     p {
+      margin-bottom: 0px;
+      color: $white;
+      text-shadow: 0px 1px 1px #5d5d5d;
+     }
+  }
+  input[type='submit']{
+	  background: $submitBtn;
+	  border-radius: 3px;
+  }
+}
