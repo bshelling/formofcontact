@@ -49,7 +49,6 @@ function drop_userDb(){
  * Render Form
  */
 function renderForm(){
-   
     return getTemplate('form','');
 }
 add_shortcode('formofcontact','renderForm');
@@ -76,3 +75,52 @@ function formStyles(){
  
 }
 add_action('wp_enqueue_scripts','formStyles');
+
+function contactListPage(){
+  global $wpdb;
+  $tablename = $wpdb->prefix."contact_list";
+  $sql = 'SELECT * FROM '.$tablename.';'; 
+  $contacts = $wpdb->get_results($sql,OBJECT);
+
+?>
+<div class="wrap">
+<h1 class="wp-heading-inline">Form of Contact Submissions</h1>
+<p style="margin-bottom:0px;">Submissions (<?php echo count($contacts); ?>)</p>
+<table class="wp-list-table widefat fixed posts">
+    <thead>
+     <tr>
+       <td style="width:35px;"><strong>Id</strong></td>
+       <td style="width:175px;"><strong>Name</strong></td>
+       <td style="width:250px;"><strong>Email</strong></td>
+       <td><strong>Message</strong></td>
+     </tr>
+    </thead> 
+       <tbody id="the-list">
+	<?php foreach($contacts as $contact): ?>
+            <tr>
+            <td><?php echo $contact->id; ?></td>
+	    <td><?php echo $contact->name; ?></td>
+	    <td><?php echo $contact->email; ?></td>
+	    <td><?php echo $contact->message; ?></td>
+            </tr>
+        <?php endforeach; ?>
+      </tbody>
+
+</table>
+</div>
+
+<?php
+}
+
+function contact_list(){
+
+ 
+  
+
+
+
+   add_menu_page('Form of Contact','Form of Contact','manage_options','form-of-contact','contactListPage');
+}
+add_action('admin_menu','contact_list');
+
+
