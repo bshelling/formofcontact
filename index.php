@@ -52,7 +52,7 @@ function renderForm(){
    
     return getTemplate('form','');
 }
-add_shortcode('contact-form','renderForm');
+add_shortcode('formofcontact','renderForm');
 
 
 /*
